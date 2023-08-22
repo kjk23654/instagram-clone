@@ -1,7 +1,7 @@
 // 파일 처리 미들웨어
 
 const multer = require('multer');
-const path = reuqire('path');
+const path = require('path');
 
 // 처리 옵션 구성
 const opts = {};

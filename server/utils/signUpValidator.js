@@ -29,7 +29,7 @@ module.exports = async(req, res, next) => { // req : request, res : response
         // 유저네임 검사
         const usernameResult = await body('username')
         .trim() // 필요없는 공백 제거
-        .isLength({ min : 5}) // 최소 5글자 이상
+        .isLength({ min : 5 }) // 최소 5글자 이상
         .isAlphanumeric() // 알파벳이나 숫자 형태인지 
         .custom(async (username) => { // 중복검사
             const user = await User.findOne({ username });
@@ -50,11 +50,11 @@ module.exports = async(req, res, next) => { // req : request, res : response
         // 비밀번호 유효성 검사
         const passwordError = await body('password')
         .trim()
-        .isLength({ min : 5})
+        .isLength({ min : 5 })
         .run(req)
 
         // 비밀번호 유효성 검사 실패
-        if(!passwordError.isEmpty) {
+        if(!passwordError.isEmpty()) {
             const err = new Error('Password validation failed');
             err.status = 400;
             throw err;
