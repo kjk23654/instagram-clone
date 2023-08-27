@@ -1,4 +1,4 @@
-// 샘플 데이터 생성
+// 샘플 데이터(Seed) 생성
 
 // 파일 호출시에 유저가 전달하는 인자(arguments)
 const userArgs = process.argv.slice(2);
@@ -21,6 +21,8 @@ async function seedDatabase() {
         const MONGODB_URI = userArgs[0];
 
         await mongoose.connect(MONGODB_URI);
+
+        // seed 데이터는 app.js와 관계가 없음. 별도로 관리가 됨
 
         // 생성할 유저 목록
         const users =  [
@@ -46,7 +48,7 @@ async function seedDatabase() {
 
         // 유저 데이터 생성
         for (let i=0; i< users.length; i++) {
-            const user = new User(); // 인스턴스
+            const user = new User(); // 인스턴스(생성자 함수 호출)
 
             user.username = users[i].username;
             user.name = users[i].name;

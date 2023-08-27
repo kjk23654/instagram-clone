@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 const jwt = require("jsonwebtoken"); // jwt = jsonWebToken
 // require() = import의 구버전
 const crypto = require("crypto"); // 암호화 관련
+const Post = require("./Post");
+
+// 필요한 패키지 또는 의존성이라 부름  
 
 // 유저스키마 (유저 모델의 구조)
 const userSchema = new Schema({
@@ -57,6 +60,7 @@ userSchema.virtual('isFollowing', {
     localField : '_id', 
     foreignField : 'following',
     justOne : true
+    // 로그인 유저가 팔로워하면 true, 아니면 false 리턴
 })
 
 
@@ -80,6 +84,7 @@ userSchema.methods.checkPassword = function (password) {
 
     // 로그인 시에 입력한 비밀번호를 유저의 salt로 다시 암호화한다.
     // salt 로그인 시에 비밀번호를 검사하기 위해서 
+    // 비밀번호는 양방향 암호화 사용X, 보통 단방향으로 암호화함
     const hashedPassword = crypto
     .pbkdf2Sync(password, this.salt, 310000, 32, "sha256")
     .toString("hex")
@@ -89,7 +94,7 @@ userSchema.methods.checkPassword = function (password) {
 
 // 3. 로그인 토큰 생성
 userSchema.methods.generateJWT = function() {
-    const payload = { // 유저의 데이터
+    const payload = { // 유저의 데이터가 저장되어있음.
         sub : this._id,
         username : this.username
     }

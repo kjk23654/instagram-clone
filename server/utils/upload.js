@@ -12,14 +12,14 @@ opts.storage = multer.diskStorage({
     destination : (req, file, cb) => { // 저장 경로 설정
         // 루트 경로의 files 폴더에 저장한다.
         cb(null, `${__dirname}/../files/${file.fieldname}/`);
-        // dirname : 
+        // dirname : 현재 파일의 경로를 리턴하는 변수
     },
 
     filename : (req, file, cb) => { // 파일이름 생성
         
         const extname = path.extname(file.originalname); // 파일의 확장자(extension)
         
-        const uniqueSuffix = Data.now() + '-' + Math.round(Math.random() * 1e9); // 1e9 = 10의 9제곱. 파일의 고유한 이름을 생성한다.
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9); // 1e9 = 10의 9제곱. 파일의 고유한 이름을 생성한다.
 
         cb(null, uniqueSuffix + extname);
     }

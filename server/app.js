@@ -44,7 +44,7 @@ app.use((req, res, next) => {
     next(createError(404));
 })
 
-// 에러 핸들러(Handler)
+// 에러 핸들러(Handler) - 이 앱에서 발생하는 모든 에러를 처리함
 app.use((err, req, res, next) => {
     console.error(err);
     res.status(err.status || 500).json(err);

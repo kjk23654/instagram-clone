@@ -8,6 +8,8 @@ require('dotenv').config();
 // 토큰 처리전략 생성에 필요한 옵션
 const opts = {};
 
+// 로그인에 성공하면 서버는 토큰을 전송
+// 브라우저는 헤더에 토큰을 같이 담아서 보내줌
 // 요청 헤더에서 토큰을 추출하는 것과 관련된 옵션
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken(); // jwtFromRequest : 요청으로부터 jwt 추출
 // 토큰 해독에 필요한 키

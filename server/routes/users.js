@@ -10,8 +10,11 @@
 
 // module.exports = router;
 
+/* ===================================================*/
 
-const express = require('express');
+// 필요한 모듈 import
+const express = require('express'); 
+
 
 const router = express.Router(); // 라우터
 const {
@@ -47,7 +50,9 @@ const auth = require("../auth/auth"); // 인증처리 미들웨어
 // put과 post가 요청메서드(RequestMethod)
 router.post('/', signUpValidator, create);
 router.post('/login', loginValidator, login);
-router.put('/user', auth, upload.single('avatar', update));
-// router.put('/user', auth, upload.single('avatar'), update);는 미들웨어가 2개 사용됨(auth, upload.single('avatar'), update);
+router.put('/user', auth, upload.single('avatar'), update);
+// router.put('/user', auth, upload.single('avatar'), update);는 
+// 미들웨어가 2개 사용됨(auth, upload.single('avatar'));
+// 미들웨어는 갯수제한이 없고 차례대로 실행됨.
 
 module.exports = router;

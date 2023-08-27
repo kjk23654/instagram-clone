@@ -17,10 +17,11 @@ const postSchema = new Schema({
 
 // 가상 필드
 
-// 1. 보여주기용 날짜
-postSchema.virtual('displayData').get( function() {
+// 1. 보여주기용 날짜(날짜를 가공해서 사용자가 보기 편하게 만들어주는 것)
+postSchema.virtual('displayData').get(function() {
     const displayDate = DateTime
-    .fromJSDate(this.createdAt) // DB에 저장되는 이름
+    .fromJSDate(this.createdAt) 
+    // this.createdAt : DB에 저장되는 생성일
     .toLocaleString(DateTime.DATE_MED);
 
     return displayDate;
@@ -52,4 +53,4 @@ postSchema.virtual('liked', {
     justOne : true
 })
 
-module.exports = mongoose.model('Post', postSchema);
+module.exports = mongoose.model('Post', postSchema); // model() : 모델을 생성함(첫번째 인자를 이름으로 해서 2번째 인자값)

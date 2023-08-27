@@ -7,7 +7,7 @@ const commentSchema = new Schema({
     post : { type : Schema.ObjectId, required : true}, // 댓글이 달린 게시물
     user : { type : Schema.ObjectId, required : true, ref : 'User'} // 댓글 작성자
 }, {
-    timestamps : true, // document의 생성일과 수정일 필드를 생성
+    timestamps : true, // document의 생성일(createdAt)과 수정일(UpdatedAt) 필드를 생성
     toJSON : { virtuals : true},
     toObject : { virtuals : true}
 })

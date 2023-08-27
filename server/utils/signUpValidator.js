@@ -6,7 +6,8 @@ module.exports = async(req, res, next) => { // req : request, res : response
     try { 
         // 이메일 유효성 검사
         const emailResult = await body('email') // body 객체(Express-validator에서 가져옴)
-        .isEmail() // 올바른 이메일인지 검사
+        // 바디 객체에 이메일을 전달
+        .isEmail() // 올바른 이메일인지 검사(body 객체의 메서드)
         .custom(async (email) => { // 중복검사
             // 이메일로 유저를 검색한다
             const user = await User.findOne({ email });
