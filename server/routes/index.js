@@ -13,6 +13,7 @@ const express = require('express');
 const router = express.Router();
 const usersRouter = require('./users');
 const profileRouter = require("./profile");
+const postsRouter = require("./posts");
 const auth = require("../auth/auth");
 
 
@@ -29,5 +30,8 @@ router.use("/users", usersRouter);
 
 // 프로필 라우터
 router.use("/profiles", auth, profileRouter);
+
+// 포스트 라우터
+router.use("/posts", auth, postsRouter);
 
 module.exports = router;

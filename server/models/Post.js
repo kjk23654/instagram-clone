@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const { DateTime } = require('luxon');
+const Comment = require('./Comment');
 
 // 포스트 스키마
 const postSchema = new Schema({

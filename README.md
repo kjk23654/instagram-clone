@@ -29,3 +29,8 @@
 ## 5일차(0824)
 ### controller/userController.js(프로필 수정) -> postman으로 프로필 수정 테스트 + 파일 업로드 테스트
 ### controller/profileController.js, route/profile.js, index.js에 profile 추가 -> postman으로 프로필 목록 검색, 프로필 상세보기
+
+## 6일차(0825)
+### controller/progileController.js : 팔로우
+### controller/progileController.js : 팔로우 취소
+### controller/postController.js : 피드 가져오기

@@ -122,7 +122,86 @@ exports.findOne = async (req, res, next) => {
 };
 
 // 팔로우
-exports.follow = async (req, res, next) => {};
+exports.follow = async (req, res, next) => {
+    try {
+        // 프로필 필드(User 도큐먼트에서 프로필 필드에 해당하는 부분만 가져옴)
+        const profileFields = 'username name avatar avatarUrl bio';
+
+        // 파라미터로 전달된 유저이름(username)으로 유저를 검색한다
+        // 파라미터는 클라이언트가 서버에 전송함
+        const profile = await User
+            .findOne({ username : req.params.username }, profileFields)
+            
+
+        // 유저가 존재하지 않을 경우
+        // 클라이언트가 요청할 리소스를 서버가 없을 때 404 처리
+        if (!profile) {
+            const err = new Error('Profile is not found')
+            err.status = 404;
+            throw err;
+        }
+
+        // req.user : 토큰을 기반으로 검색한 유저(=로그인 유저)
+        // req.params.username : 로그인유저가 팔로우를 요청한 유저
+        if (req.user.username === req.params.username) {
+            // 본인을 팔로우하는 경우
+            const err = new Error('Cannot follow yourself')
+            err.status = 400;
+            throw err;
+        }
+
+        // 이미 팔로우 상태인지 확인한다. 
+        const isFollowing = await Following
+            .findOne({ user : req.user._id, following : profile._id});
+
+        // 팔로우상태가 아닌 경우 : 팔로우처리를 해야함
+        if (!isFollowing) {
+            const following = new Following({
+                user : req.user._id, // 도큐먼트의 아이디
+                following : profile._id
+            })
+
+            await following.save();
+        }
+
+        // 서버의 응답
+        res.json({ profile });
+
+    } catch(error) {
+        next(error)
+    }
+};
 
 // 팔로우 취소
-exports.unfollow = async (req, res, next) => {};
+exports.unfollow = async (req, res, next) => {
+    try {
+        const profileFields = 'username name avatar avatarUrl bio';
+
+        // 팔로우를 취소할 프로필을 검색한다.
+        const profile = await User
+            .findOne({ username : req.params.username }, profileFields)
+            // 클라이언트가 파라미터로 팔로우를 취소할 username을 전송
+        
+        // 프로필이 존재하지 않은 경우
+        if(!profile) {
+            const err = new Error('Profile is not found')
+            err.status = 404;
+            throw err;
+        }
+
+        // 현재 프로필 유저를 팔로우 중인지 확인
+        const isFollowing = await Following
+            .findOne({ user: req.user._id, following : profile._id });
+
+        // 팔로우 중이 맞다면 팔로우를 취소한다.
+        if (isFollowing) {
+            // deleteOne : 한 개의 도큐먼트를 삭제한다
+            await isFollowing.deleteOne();
+        }
+
+        res.json({ profile });
+
+    } catch(error) {
+        next(error)
+    }
+};
