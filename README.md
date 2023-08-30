@@ -34,3 +34,13 @@
 ### controller/progileController.js : 팔로우
 ### controller/progileController.js : 팔로우 취소
 ### controller/postController.js : 피드 가져오기
+
+## 7일차(0829)
+### controller/postController.js : 게시물 리스트 가져오기
+### controller/postController.js : 게시물 한개 가져오기
+### controller/postController.js : 게시물 생성
+### controller/postController.js : 게시물 삭제 
+### controller/postController.js : 좋아요
+### controller/postController.js : 좋아요 취소
+
+### controller/commentController.js : 댓글 생성
