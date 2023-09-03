@@ -44,3 +44,33 @@
 ### controller/postController.js : 좋아요 취소
 
 ### controller/commentController.js : 댓글 생성
+
+
+## 8일차(0831)
+
+### controller/commentController.js : 댓글 가져오기
+### controller/commentController.js : 댓글 삭제
+
+### 서버 끝. 클라이언트 시작
+
+## client
+### src/service/api.js : 유저 생성 요청
+### src/service/api.js : 로그인 요청
+### src/service/api.js : 피드 요청
+### src/service/api.js : 게시물 한개 가져오기 요청
+### src/service/api.js : 게시물 생성 요청
+### src/service/api.js : 게시물 삭제 요청
+### src/service/api.js : 좋아요 요청
+### src/service/api.js : 좋아요 취소 요청
+### src/service/api.js : 댓글 가져오기 요청
+### src/service/api.js : 댓글 생성 요청
+### src/service/api.js : 댓글 삭제 요청
+### src/service/api.js : 프로필 수정 요청
+### src/service/api.js : 프로필 사진 수정 요청
+### src/service/api.js : 프로필 리스트 가져오기 요청
+### src/service/api.js : 프로필 상세보기 요청
+### src/service/api.js : 타임라인 가져오기 요청
+### src/service/api.js : 팔로워리스트 리스 가져오기 요청
+### src/service/api.js : 팔로잉리스트 가져오기 요청
+### src/service/api.js : 팔로우 요청
+### src/service/api.js : 언팔로우 요청
