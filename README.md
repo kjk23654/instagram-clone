@@ -87,4 +87,5 @@
 ### src/auth/AuthRequired.js
 
 ### src/pages에 있는 모든 컴포넌트 작성
-## app.js 
+### app.js 
+### server, client 키기
