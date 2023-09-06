@@ -8,9 +8,9 @@
 ### 설정(환경변수, app.js
 
 ## 2일차(0817)
-###모델 패키지 작성(User.js,  Post.js, Likes.js, Comment.js,  Following.js,)
-###auth/auth.js
-###files/photos, files/avatar
+### 모델 패키지 작성(User.js,  Post.js, Likes.js, Comment.js,  Following.js,)
+### auth/auth.js
+### files/photos, files/avatar
 
 ## 3일차(0818)
 ### files와 photos에 사진 파일 추가
@@ -74,3 +74,17 @@
 ### src/service/api.js : 팔로잉리스트 가져오기 요청
 ### src/service/api.js : 팔로우 요청
 ### src/service/api.js : 언팔로우 요청
+
+
+## 9일차(0901)
+
+### src/utils/validator.js : 이메일 유효성 검사
+### src/utils/validator.js : 유저이름 유효성 검사
+### src/utils/validator.js : 비밀번호 유효성 검사
+
+### src/auth/AuthContext.js
+### src/auth/AuthProvider.js
+### src/auth/AuthRequired.js
+
+### src/pages에 있는 모든 컴포넌트 작성
+## app.js 
