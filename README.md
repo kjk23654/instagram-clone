@@ -89,3 +89,9 @@
 ### src/pages에 있는 모든 컴포넌트 작성
 ### app.js 
 ### server, client 키기
+
+## 10일차(0905)
+
+### client/src/pages/Login.js
+### client/src/pages/SignUp.js
+### client/src/pages/Layout.js
