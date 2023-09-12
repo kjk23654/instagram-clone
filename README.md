@@ -95,3 +95,10 @@
 ### client/src/pages/Login.js
 ### client/src/pages/SignUp.js
 ### client/src/pages/Layout.js
+
+
+## 11일차(0907)
+### client/src/pages/profile/profile.js
+### client/src/pages/profile/profileInfo.js
+### client/src/pages/profile/Thumbnail.js
+### client/src/pages/ProfileEdit.js

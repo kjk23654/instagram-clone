@@ -69,7 +69,7 @@ export default function Login() {
         <form onSubmit={handleSubmit} className="max-w-xs p-4 mt-16 mx-auto">
             {/* 로고 */}
             <div className="mt-4 mb-4 flex justify-center">
-                <img src="/images/logo.png" className="w-36" />
+                <img src="/images/logo.png" className="w-36" alt="" />
             </div>
 
             {/* 이메일 입력란 */}
