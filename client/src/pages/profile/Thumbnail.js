@@ -8,7 +8,7 @@ export default function Thumbnail({
 }) {
     return (
         <li>
-            <Link to={'/p/${id}'} className="block h-40 relative">
+            <Link to={`/p/${id}`} className="block h-40 relative">
                 {/* 썸네일 이미지 */}
                 <img
                     src={thumbnailUrl}

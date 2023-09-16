@@ -35,6 +35,7 @@ userSchema.virtual('postCount', { // 컬렉션 조인(join)
     ref : 'Post', // Post 모델과 조인한다. (ref = reference = 참조한다)
     localField : '_id', // 기본키 - 조인의 기준
     foreignField : 'user', // 외래키 - 조인의 기준
+    // model 사이에 연결해주는 join의 기준
     count : true 
 })
 

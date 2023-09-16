@@ -36,7 +36,7 @@ import Comments from "./pages/comments/Comments";
 import Explore from "./pages/explore/Explore";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import Profile from "./pages/explore/Profile";
+import Profile from "./pages/profile/Profile";
 import FollowerList from "./pages/followerList/FollowerList";
 import FollowingList from "./pages/followingList/FollowingList";
 import ProfileEdit from "./pages/ProfileEdit";

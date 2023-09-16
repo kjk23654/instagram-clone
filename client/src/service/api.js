@@ -214,7 +214,7 @@ export async function deleteComment(id) {
 // 1. 프로필 수정 요청
 export async function updateProfile(editedProfile) {
     // 이름,자기소개(bio) 등을 수정하는 필드
-    const res = await fetch(`${server}/profiles`, {
+    const res = await fetch(`${server}/users/user`, {
         method : "PUT",
         headers : {
             'Content-Type' : "application/json",
@@ -232,7 +232,7 @@ export async function updateProfile(editedProfile) {
 
 // 2. 프로필 사진 수정 요청
 export async function updateAvatar(formData) { // 파일이기 때문에 formData
-    const res = await fetch(`${server}/profiles`, {
+    const res = await fetch(`${server}/users/user`, {
         method : "PUT",
         headers : {
             "Authorization" : getBearerToken()
@@ -298,7 +298,7 @@ export async function getTimeline(username) {
 }
 
 // 6. 팔로워 리스트 가져오기 요청
-export async function fetFollowers(username) {
+export async function getFollowers(username) {
     const res = await fetch(`${server}/profiles/?followers=${username}`, {
         headers : {
             'Authorization' : getBearerToken()

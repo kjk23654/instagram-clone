@@ -7,7 +7,7 @@ export default function AuthProvider({ children }) {
     // 이를 막기 위해서 로컬스토리지에 동기화해야함.
     const initialUser = JSON.parse(localStorage.getItem('user'));
 
-    // 유저 데이터 관리
+    // ★유저 데이터 관리★ (인증이 적용된 라우터와 비슷함)
     const [user, setUser] = useState(initialUser);
 
 

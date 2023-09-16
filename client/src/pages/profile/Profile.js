@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext, useRef} from "react";
-import { useParam, useNavigate, Link} from "react-router-dom";
+import { useParams, useNavigate, Link} from "react-router-dom"; // eslint-disable-line no-unused-vars
 import AuthContext from "../../auth/AuthContext";
 import ProfileInfo from "./ProfileInfo"; // 프로필 페이지를 구성하는 컴포넌트
 import Thumbnail from "./Thumbnail"; // 프로필 페이지를 구성하는 컴포넌트
@@ -49,10 +49,30 @@ export default function Profile() {
     }
 
     // 팔로우 처리
-    async function handleFollow() {};
+    async function handleFollow() {
+        try {
+            // 서버 요청
+            await follow(username);
+
+            // 프로필 업데이트
+            setProfile({ ...profile, isFollowing : true })
+        } catch (error) {
+            alert (error)
+        }
+    };
 
     // 언팔로우 처리
-    async function handleUnfollow() {};
+    async function handleUnfollow() {
+        try {
+            // 서버 요청
+            await unfollow(username);
+
+            // 프로필 업데이트
+            setProfile({ ...profile, isFollowing : false });
+        } catch (error) {
+            alert (error)
+        }
+    };
 
     // 로그아웃
     async function handleSignOut() {
@@ -111,7 +131,7 @@ export default function Profile() {
                     {postList}
                 </ul>
             ) : (
-                <p className="text-center">게시물이 없습니다</p>
+                <p className="text-center">{profile.username}게시물이 없습니다</p>
             )}
 
             {/* 게시물 생성 버튼 */}

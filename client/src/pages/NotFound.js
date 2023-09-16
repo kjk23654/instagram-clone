@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function NotFound() {
     useEffect(() => { // 앱에서 여러가지 효과를 적용할 때 사용
-        document.title = "페이지를 사용할 수  없습니다"
+        document.title = "페이지를 사용할 수 없습니다"
     }, [])
 
     return (

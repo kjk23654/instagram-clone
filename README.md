@@ -51,7 +51,9 @@
 ### controller/commentController.js : 댓글 가져오기
 ### controller/commentController.js : 댓글 삭제
 
-### 서버 끝. 클라이언트 시작
+### 서버 끝. 
+* * * *
+###클라이언트 시작
 
 ## client
 ### src/service/api.js : 유저 생성 요청
@@ -78,6 +80,7 @@
 
 ## 9일차(0901)
 
+### 클라이언트 측 유효성 검사 라이브러리
 ### src/utils/validator.js : 이메일 유효성 검사
 ### src/utils/validator.js : 유저이름 유효성 검사
 ### src/utils/validator.js : 비밀번호 유효성 검사
@@ -102,3 +105,10 @@
 ### client/src/pages/profile/profileInfo.js
 ### client/src/pages/profile/Thumbnail.js
 ### client/src/pages/ProfileEdit.js
+
+## 12일차(0912)
+### client/src/pages/ProfileEdit.js - 폼(이름 입력란, 자기소개 입력란, 제출 및 취소 버튼)
+### client/src/pages/ProfileEdit.js - 파일 처리 + 프로필 수정 요청 + 프로필 사진 수정 요청, 폼 제출 처리
+
+### client/src/pages/PostCreate.js
+### client/src/pages/PostView.js
