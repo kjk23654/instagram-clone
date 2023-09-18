@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPost } from "../service/api";
 
-// 게시물은 모달로 생성되고, 생성이 완료되면 피드로 이동
+// 게시물은 모달로 구현되고, 게시물 생성이 완료되면 피드로 이동
 export default function PostCreate({ setModalOpen }) {
     const navigate = useNavigate();
     const [caption, setCaption] = useState(""); // 게시물의 내용을 저장
@@ -51,7 +51,7 @@ export default function PostCreate({ setModalOpen }) {
         <li key={file.name} className="pt-[100%] relative">
             <img
                 className="absolute inset-0 w-full h-full object-cover"
-                // URL.createObjectURL(blob객체) : blob객체에 접근 가능한 URL을 생성
+                // URL.createObjectURL(blob객체) : blob객체에 접근 가능한 URL을 생성한다
                 src={URL.createObjectURL(file)}
                 alt={file.name}
             />    
@@ -79,7 +79,7 @@ export default function PostCreate({ setModalOpen }) {
                             className="hidden"
                             onChange={({ target }) => setFiles(Array.from(target.files))}
                             multiple={true}
-                            // 게시물을 여러개 업로드할 수 있음
+                            // 게시물이니까 사진을 여러개 업로드할 수 있음
                             accept="image/png, image/jpg, image/jpeg"
                             // accept = 클라이언트 측 파일 포맷 필터링
                         />

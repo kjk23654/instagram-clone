@@ -7,6 +7,7 @@ import { isEmail, isUsername, isPassword } from "../utils/validator";
 // 회원가입
 export default function SignUp() {
     const navigate = useNavigate();
+    // 가입에 성공하면 로그인페이지로 이동시킴
     const [error, setError] = useState(null);
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
@@ -26,7 +27,7 @@ export default function SignUp() {
             // 가입 환영 인사
             alert(`안녕하세요 ${name}님!`);
 
-            // 로그인 페이지로 이동시킨다.
+            // 피드 -> 로그인 페이지로 이동시킨다.
             navigate('/');
 
         } catch (error) {
@@ -43,7 +44,7 @@ export default function SignUp() {
         <form onSubmit={handleSubmit} className="max-w-xs mx-auto p-4 mt-16">
             {/* 로고이미지 */}
             <div className="mt-4 mb-4 flex justify-center">
-                <img src="/images/logo.png" className="w-36" alt=""/>
+                <img src="/images/logo.png" className="w-36" />
             </div>
 
             {/* 이메일 입력란 */}

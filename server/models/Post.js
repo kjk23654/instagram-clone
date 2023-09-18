@@ -19,7 +19,7 @@ const postSchema = new Schema({
 // 가상 필드
 
 // 1. 보여주기용 날짜(날짜를 가공해서 사용자가 보기 편하게 만들어주는 것)
-postSchema.virtual('displayData').get(function() {
+postSchema.virtual('displayDate').get(function() {
     const displayDate = DateTime
     .fromJSDate(this.createdAt) 
     // this.createdAt : DB에 저장되는 생성일

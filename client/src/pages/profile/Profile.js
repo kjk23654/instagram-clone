@@ -1,29 +1,31 @@
 import { useState, useEffect, useContext, useRef} from "react";
-import { useParams, useNavigate, Link} from "react-router-dom"; // eslint-disable-line no-unused-vars
+import { useParams, useNavigate, Link} from "react-router-dom"; 
 import AuthContext from "../../auth/AuthContext";
 import ProfileInfo from "./ProfileInfo"; // 프로필 페이지를 구성하는 컴포넌트
 import Thumbnail from "./Thumbnail"; // 프로필 페이지를 구성하는 컴포넌트
 import PostCreate from "../PostCreate"; // 게시물 생성 페이지
 import { getProfile, getTimeline, follow, unfollow } from "../../service/api";
 // 서버 요청 라이브러리. 프로필페이지에서 필요한 요청을 import
-import Spinner from "../shared/Spinner";
+import Spinner from "../shared/Spinner"; // 대기 상태 표현
 
 export default function Profile() {
     const { username } = useParams();
-    // App.js : <Route path="profiles/:username">를 useParams를 통해 접근
+    // App.js : <Route path="profiles/:username">의 username 파라미터를 useParams Hook을 통해 접근
     const { user, setUser } = useContext(AuthContext);
+    // user : 현재 로그인 유저의 데이터
+    // setUser : 유저를 업데이트 시키는 함수(AuthProvider에서 전달)
     const [profile, setProfile] = useState(null);
     // 서버에서 전송해준 프로필 데이터를 담을 변수
     const [posts, setPosts] = useState([]); // 유저의 타임라인을 담을 변수
     const [modalOpen, setModalOpen] = useState(false);
     const navigate = useNavigate();
-    // 프로필 요청을 실패했을 때 404 페이지에서 이동시킴(=유저의 위치를 이동)
+    // 프로필 요청을 실패했을 때 에러처리를 일일히 하는 게 아니라 404 페이지에서 이동시킴(=유저의 위치를 이동)
 
     // 키 스테이트 추적
     console.log(profile);
     console.log(posts); 
 
-    // 서버에 데이터 요청
+    // 서버에 데이터 요청(서버에서 프로필을 가져오고 화면에 표시)
     useEffect(() => {
         fetchData()
     }, [username]);
@@ -43,7 +45,8 @@ export default function Profile() {
 
         } catch (error) {
             navigate("/notfound", { replace : true });
-            // 에러 발생시 404페이지로 이동.(에러를 따로 처리하지 않음)
+            // 에러 발생시 404페이지로 이동.
+            // (profile 컴포넌트에서 에러를 따로 처리하지 않음)
             // 404페이지는 에러처리 페이지
         }
     }
@@ -89,7 +92,7 @@ export default function Profile() {
     }, [])
 
     // 타임라인
-    const postList = posts.map(post => {
+    const postList = posts.map(post => (
         <Thumbnail
             key={post.id}
             id={post.id}
@@ -97,7 +100,7 @@ export default function Profile() {
             likesCount={post.likesCount}
             commentCount={post.commentCount}
         />
-    })
+    ))
 
     if (!profile) {
         return <Spinner />
@@ -121,17 +124,18 @@ export default function Profile() {
                 // 로그인유저의 username과 프로필 유저 username을 비교.
                 // 본인 프로필은 참. 아니면 거짓
             />
-            {/* 프로필 정보 표시 */}
+            {/* ------------------- 프로필 정보 표시 -------------*/}
 
-            {/* 타임 라인 */}
+            
             <div className="border-t my-4"></div>
 
+            {/* 타임 라인 */}
             {postList.length > 0 ? (
                 <ul className="grid grid-cols-3 gap-2 mb-2">
                     {postList}
                 </ul>
             ) : (
-                <p className="text-center">{profile.username}게시물이 없습니다</p>
+                <p className="text-center">게시물이 없습니다</p>
             )}
 
             {/* 게시물 생성 버튼 */}

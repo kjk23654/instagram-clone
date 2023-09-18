@@ -1,8 +1,7 @@
 import { useState, useContext, useEffect } from "react"; // 리액트 Hook
-import { Link, isRouteErrorResponse, useNavigate } from "react-router-dom"; // eslint-disable-line no-unused-vars
-// react-router-dom : 리액트 라우터 기능을 지원하는 패키지
+import { Link, isRouteErrorResponse, useNavigate } from "react-router-dom"; // react-router-dom : 리액트 라우터 기능을 지원하는 패키지
 import AuthContext from "../auth/AuthContext"; 
-// AuthProvider에서 전달하는 Value 객체에 접근할 때 사용
+// AuthProvider에서 전달한 Value 객체에 접근할 때 사용
 import { signIn } from "../service/api";
 // 서버 요청 라이브러리로, 로그인 처리하는 함수
 import { isEmail, isPassword} from "../utils/validator";
@@ -10,15 +9,17 @@ import { isEmail, isPassword} from "../utils/validator";
 
 export default function Login() {
     const { setUser } = useContext(AuthContext); 
-    // user를 업데이트. 로그인 하면 서버가 전송해준 응답객체로 user 업데이트
+    // user를 업데이트. 로그인 하면 서버가 전송해준 응답객체로 user를 업데이트
     const navigate = useNavigate();
-    // 페이지를 이동할 때 사용하는 Hook
+    // 페이지를 이동시킬 때 사용하는 Hook
     // Hook = 리액트나 라이브러리가 제공하는 특별한 함수
+    // 로그인 성공하고 나서 피드로 이동시켜야하기 때문에 필요함
     const [ error, setError ] = useState(null);
     const [ email, setEmail ] = useState(localStorage.getItem("email") || "");
-    // 로그인 성공하면 로그인할 때 이메일을 자동으로 입력
+    // 로그인을 한번 성공하면 그 후 로그인할 때 이메일을 자동으로 입력
     const [ password, setPassword ] = useState("");
-    const [ showPassword, setShowPassword ] = useState(false); // 숨기기
+    const [ showPassword, setShowPassword ] = useState(false); 
+    // 비밀번호를 표시할 지, 숨길 지 사용할 때
 
     // 폼 제출처리
     async function handleSubmit(e) {
@@ -40,7 +41,10 @@ export default function Login() {
           localStorage.setItem('email', email);
 
           // 피드 페이지로 이동한다.
-          setTimeout(() => { // 유저 데이터 처리가 시간이 좀 걸림.
+          setTimeout(() => { 
+            // setTimeout을 사용한 이유 
+            // : react가 유저 데이터를 처리하는 데 시간이 좀 걸림
+            // -> 딜레이 후에 접근 하도록 하기 위함
             navigate('/');
           }, 500);
 
@@ -69,7 +73,7 @@ export default function Login() {
         <form onSubmit={handleSubmit} className="max-w-xs p-4 mt-16 mx-auto">
             {/* 로고 */}
             <div className="mt-4 mb-4 flex justify-center">
-                <img src="/images/logo.png" className="w-36" alt="" />
+                <img src="/images/logo.png" className="w-36" />
             </div>
 
             {/* 이메일 입력란 */}
@@ -98,6 +102,7 @@ export default function Login() {
                     />
                     {password.trim().length > 0 && passwordToggleButton} 
                     {/* 조건부 렌더링 */}
+                    {/* 비밀번호를 1개 이상 입력했을 때 나타남 */}
                 </label>
             </div>
 

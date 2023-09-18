@@ -50,23 +50,23 @@ export default function ProfileEdit() {
         try {
             // 유저가 선택한 파일
             const file = e.target.files[0]; // event.target = input
-            // 클라이언트가 선택한 파일은 files라는 객체 안에 저장됨
+            // 클라이언트가 선택한 파일은 files라는 변수 안에 저장됨
 
             // 폼 데이터 타입 : 서버에 파일을 전송할 때 사용함
-            // 파일은 JSON으로 못보냄
+            // 파일은 JSON으로 아닌 formData 타입으로 보내야함
             const formData = new FormData(); // 인스턴스
             
             // 폼데이터에 유저가 선택한 파일을 저장한다
             // append(첫번째, 두번째)
             // 첫번째 : 파일의 이름(서버는 이름을 가지고 데이터를 구분)
-            // 두번째 : 선언한 변수 이름(유저가 선택한 파일이 저장되어 있음)
+            // 두번째 : 선언한 변수(유저가 선택한 파일이 저장되어 있음)
             formData.append("avatar", file);
 
             // 서버 요청
             const { user } = await updateAvatar(formData);
             // 응답 객체를 user라는 변수에 담고 있음
 
-            //  유저 업데이트
+            //  응답 객체로 유저 업데이트
             setUser(user);
 
             // 성공 메시지
@@ -90,7 +90,6 @@ export default function ProfileEdit() {
                 <img 
                     src={user.avatarUrl}
                     className="w-16 h-16 object-cover rounded-full border"
-                    alt=""
                 />
 
                 <div className="flex flex-col grow items-start ml-4">
@@ -102,6 +101,7 @@ export default function ProfileEdit() {
                             className="hidden"
                             onChange={handleFile}
                             accept="image/png, image/jpg, image/jpeg"
+                            // 클라이언트 측 파일 포맷 필터링
                         />
                         사진 업데이트    
                     </label>
@@ -135,7 +135,6 @@ export default function ProfileEdit() {
                         onChange={({ target }) => setNewBio(target.value)}
                     />    
                 </div>
-                {/* Bio textarea에 hello bunny가 안나옴. */}
 
                 {/* 제출 및 취소 버튼 */}
                 <div className="flex">

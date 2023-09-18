@@ -93,6 +93,7 @@
 ### app.js 
 ### server, client 키기
 
+
 ## 10일차(0905)
 
 ### client/src/pages/Login.js
@@ -101,14 +102,24 @@
 
 
 ## 11일차(0907)
-### client/src/pages/profile/profile.js
+### client/src/pages/profile/profile.js(팔로우 처리, 언팔로우 처리 제외)
 ### client/src/pages/profile/profileInfo.js
 ### client/src/pages/profile/Thumbnail.js
-### client/src/pages/ProfileEdit.js
+### client/src/pages/ProfileEdit.js (하다가 끝남)
+
 
 ## 12일차(0912)
 ### client/src/pages/ProfileEdit.js - 폼(이름 입력란, 자기소개 입력란, 제출 및 취소 버튼)
-### client/src/pages/ProfileEdit.js - 파일 처리 + 프로필 수정 요청 + 프로필 사진 수정 요청, 폼 제출 처리
+### client/src/pages/ProfileEdit.js - 파일 처리 + (프로필 수정 요청 + 프로필 사진 수정 요청), 폼 제출 처리
 
-### client/src/pages/PostCreate.js
-### client/src/pages/PostView.js
+### client/src/pages/PostCreate.js(게시물 생성)
+### client/src/pages/PostView.js(게시물 상세보기)
+
+
+## 13일차(0914)
+### client/src/pages/shared/PostTemplate.js
+### client/src/pages/shared/Carousel.js
+### client/src/pages/PostView.js - 좋아요 처리, 좋아요 취소 처리, 게시물 삭제 처리
+### client/src/pages/comments/Comments.js
+### client/src/pages/comments/Form.js
+### client/src/pages/comments/Comment.js

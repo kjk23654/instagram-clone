@@ -111,6 +111,7 @@ export default function ProfileInfo({
 
                         {/* 팔로우/언팔로우 버튼 */}
                         {/* isMaster가 false일때 나타남(본인 프로필 아닐 때) */}
+                        {/* 로그인 유저가 profile 유저를 팔로우하면 isFollowing은 True  */}
                         {(!isMaster && !isFollowing) && followButton}
                         {(!isMaster && !isFollowing) && unfollowButton}
                     </div>
