@@ -123,3 +123,15 @@
 ### client/src/pages/comments/Comments.js
 ### client/src/pages/comments/Form.js
 ### client/src/pages/comments/Comment.js
+
+## 14일차(0915)
+### client/src/pages/comments/Comment.js - 삭제 버튼 클릭 처리
+### client/src/pages/comments/Comments.js - 댓글 삭제
+### client/src/pages/explore/Explore.js
+### client/src/pages/explore/Form.js
+### client/src/pages/explore/Profile.js (유저 검색 페이지)
+### client/src/pages/profile/profile.js - 팔로우 처리, 언팔로우 처리
+### client/src/pages/followerList/FollowerList.js
+### client/src/pages/followerList/Follower.js
+### client/src/pages/followingList/FollowingList.js
+### client/src/pages/followingList/FollowingUser.js

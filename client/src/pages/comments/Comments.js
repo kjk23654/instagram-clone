@@ -48,7 +48,17 @@ export default function Comments() {
 
     // 댓글 삭제
     async function handleDelete(id) {
-        
+        // console.log(id); // 삭제할 댓글의 id
+
+        // 서버 요청
+        await deleteComment(id);
+
+        // comments 업데이트
+        const remainingComments = comments.filter(comment => comment.id !== id);
+        // 기존 comments 댓글 목록에서 전달받은 id와 일치하는 댓글만 제외하고 나머지 댓글들만 remainingComments에 저장
+
+        setComments(remainingComments);
+
     }
 
     // 댓글 목록

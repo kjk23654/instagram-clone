@@ -13,6 +13,7 @@ export default function FollowerList() {
     // 키 스테이트
     console.log(followers);
 
+    // 팔로워 리스트 가져오기 요청
     useEffect(() => {
         fetchData()
     }, [])
@@ -22,6 +23,7 @@ export default function FollowerList() {
             const data = await getFollowers(username);
 
             setFollowers([...followers, ...data.profiles]);
+
         } catch (error) {
             setError(error)
         } finally {
@@ -42,6 +44,7 @@ export default function FollowerList() {
                 }
 
                 return follower;
+                // 데이터 타입이 배열이다보니 순회를 해야하므로 map
             })
 
             setFollowers(updatedFollowers);
@@ -74,7 +77,6 @@ export default function FollowerList() {
 
     // 팔로우 리스트
     const followerList = followers.map(follower => (
-
         // 각각의 프로필
         <Follower
             key={follower.id}

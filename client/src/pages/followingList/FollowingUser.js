@@ -23,7 +23,7 @@ export default function FollowingUser({
     const unfollowButton = (
         <button
             className="ml-2 bg-gray-200 text-sm px-4 py-2 font-semibold p-2 rounded-lg"
-            onClick={() => handleUnFollow(username)}
+            onClick={() => handleUnfollow(username)}
         >
             팔로잉
         </button>    
